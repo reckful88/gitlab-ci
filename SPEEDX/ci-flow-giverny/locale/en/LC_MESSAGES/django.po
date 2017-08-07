@@ -1,0 +1,631 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-11 15:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/appeal/logics.py:134
+msgid "feedback_success"
+msgstr ""
+"Your feedback has been successfully submitted, the staff shall reply to you "
+"as soon as possible"
+
+#: apps/club/configs.py:8
+msgid "privileg_1_01"
+msgstr "Membership caps at 50"
+
+#: apps/club/configs.py:9
+msgid "privileg_1_02"
+msgstr "Album holds 500 pictures at the most"
+
+#: apps/club/configs.py:12
+msgid "privileg_2_01"
+msgstr "Membership caps at 100"
+
+#: apps/club/configs.py:13
+msgid "privileg_2_02"
+msgstr "Album holds 1000 pictures at the most"
+
+#: apps/club/configs.py:16
+msgid "privileg_3_01"
+msgstr "Membership caps at 150"
+
+#: apps/club/configs.py:17
+msgid "privileg_3_02"
+msgstr "Album holds 1500 pictures at the most"
+
+#: apps/club/configs.py:18
+msgid "privileg_3_03"
+msgstr "SpeedX-customized flag"
+
+#: apps/club/configs.py:21
+msgid "privileg_4_01"
+msgstr "Membership caps at 300"
+
+#: apps/club/configs.py:22
+msgid "privileg_4_02"
+msgstr "Album holds 5000 pictures at the most"
+
+#: apps/club/configs.py:25
+msgid "privileg_5_01"
+msgstr "Membership caps at 400"
+
+#: apps/club/configs.py:26
+msgid "privileg_5_02"
+msgstr "Album holds 10000 pictures at the most"
+
+#: apps/club/configs.py:36 apps/club/configs.py:43 apps/club/configs.py:50
+#: apps/club/configs.py:60
+msgid "progress_01"
+msgstr "Members"
+
+#: apps/club/configs.py:37 apps/club/configs.py:44 apps/club/configs.py:51
+#: apps/club/configs.py:61
+msgid "progress_02"
+msgstr "Distance"
+
+#: apps/club/configs.py:38 apps/club/configs.py:45
+msgid "progress_03"
+msgstr "Pictures"
+
+#: apps/club/configs.py:39 apps/club/configs.py:46
+msgid "progress_04"
+msgstr "Missions"
+
+#: apps/club/configs.py:40 apps/club/configs.py:47 apps/club/configs.py:55
+#: apps/club/configs.py:65
+msgid "progress_05"
+msgstr "Active"
+
+#: apps/club/configs.py:77
+msgid "levelup_to_2"
+msgstr "【SpeedX】Congratulations, your club level up to Lv.2"
+
+#: apps/club/configs.py:78
+msgid "levelup_to_3"
+msgstr ""
+"【SpeedX】Congratulations, your club level up to Lv.2. Please contact Speedy "
+"for your SpeedX-customized flag, Wechat ID: beast0001"
+
+#: apps/club/configs.py:79
+msgid "levelup_to_4"
+msgstr "【SpeedX】Congratulations, your club level up to Lv.4"
+
+#: apps/club/configs.py:80
+msgid "levelup_to_5"
+msgstr "【SpeedX】Congratulations, your club level up to Lv.5"
+
+#: apps/configs/logics.py:15
+msgid "my_last_month_distacne"
+msgstr "Last Month Distance"
+
+#: apps/configs/logics.py:19
+msgid "club_month_avg"
+msgstr "Club Average Monthly Distance"
+
+#: apps/configs/logics.py:23
+msgid "month_rank_top"
+msgstr "Distance of Monthly Champion"
+
+#: apps/configs/logics.py:27
+msgid "speedx_avg"
+msgstr "SpeedX Global Average Distance"
+
+#: apps/utils/logics.py:20
+msgid "club_vcode_msg"
+msgstr "【SpeedX】{0} code for club creation"
+
+#: apps/utils/logics.py:21
+msgid "prize_vcode_msg"
+msgstr "【SpeedX】{0} code for receiving prize"
+
+#: apps/utils/logics.py:22
+msgid "default_vcode_msg"
+msgstr "【SpeedX】{0} verification code"
+
+#: apps/utils/logics.py:23
+msgid "bind_phone_vcode_msg"
+msgstr "【SpeedX】{0} verification code."
+
+#: apps/utils/logics.py:24
+msgid "phone_reg_vcode_msg"
+msgstr "【SpeedX】{0} code for sign up"
+
+#: apps/utils/logics.py:25
+msgid "reset_pwd_vcode_msg"
+msgstr "【SpeedX】{0} Reset password verification code"
+
+#: apps/utils/logics.py:26
+msgid "club_act_reg_notify"
+msgstr "【野兽骑行】您已报名『{0}』，时间地点详见电子票：{1}"
+
+#: apps/utils/logics.py:27
+msgid "sigin_with_vcode"
+msgstr "【野兽骑行】验证码{0},感谢您使用野兽骑行!"
+
+#: apps/utils/logics.py:28
+msgid "club_act_pre_notify"
+msgstr ""
+"【野兽骑行】『{0}』活动就要开始了，不要忘记哦！时间：{1}, 集合点：{2}。"
+
+#: apps/utils/logics.py:29
+msgid "inherit_club_msg"
+msgstr ""
+"club transfer verification code is {0}, If you didn't request this,please "
+"ignore this message. "
+
+#: apps/utils/logics.py:30
+msgid "change_phone_vcode_msg"
+msgstr "【SpeedX】{0} verification code"
+
+#: apps/utils/logics.py:31
+msgid "bind_email_vcode_msg"
+msgstr "Hi,The verification code is {0} and the expiry date is 30 minutes"
+
+#: apps/utils/logics.py:32
+msgid "change_email_vcode_msg"
+msgstr "Hi,The verification code is {0} and the expiry date is 30 minutes"
+
+#: apps/utils/logics.py:33
+msgid "unbind_email_vcode_msg"
+msgstr "Hi,The verification code is {0} and the expiry date is 30 minutes"
+
+#: templates/add_activity_form.html:21
+msgid "Home"
+msgstr ""
+
+#: templates/add_activity_form.html:24
+msgid "Add"
+msgstr ""
+
+#: utils/status_codes.py:19
+msgid "server_is_busy"
+msgstr "Service is busy,please wait"
+
+#: utils/status_codes.py:20
+msgid "record_already_fake"
+msgstr "record already fake"
+
+#: utils/status_codes.py:21
+msgid "record_is_unfake"
+msgstr "record is unfake"
+
+#: utils/status_codes.py:23
+msgid "missing_parameters"
+msgstr "Missing parameters"
+
+#: utils/status_codes.py:24
+msgid "anonymous_user"
+msgstr "you are not logged in"
+
+#: utils/status_codes.py:25
+msgid "unsupport_signtype"
+msgstr "unsupport sign type"
+
+#: utils/status_codes.py:26
+msgid "invalid_email"
+msgstr "invalid email"
+
+#: utils/status_codes.py:27
+msgid "expired_token"
+msgstr "expired token"
+
+#: utils/status_codes.py:28
+msgid "password_wrong"
+msgstr "Incorrect password"
+
+#: utils/status_codes.py:29
+msgid "account_not_exist"
+msgstr "account not exist"
+
+#: utils/status_codes.py:30
+msgid "account_exist"
+msgstr "account exist"
+
+#: utils/status_codes.py:31
+msgid "parameters_empty"
+msgstr "parameters empty"
+
+#: utils/status_codes.py:32
+msgid "unchange_text"
+msgstr "unchange text"
+
+#: utils/status_codes.py:33
+msgid "invalid_phone"
+msgstr "invalid phone"
+
+#: utils/status_codes.py:34
+msgid "has_been_binded"
+msgstr "has been binded"
+
+#: utils/status_codes.py:35
+msgid "is_finally_account"
+msgstr "is finally account"
+
+#: utils/status_codes.py:36
+msgid "is_not_binded"
+msgstr "is not binded"
+
+#: utils/status_codes.py:37
+msgid "has_been_binded_same_type"
+msgstr "has been binded same type"
+
+#: utils/status_codes.py:38
+msgid "invalid_access_token"
+msgstr "invalid access token"
+
+#: utils/status_codes.py:39
+msgid "user_not_exist"
+msgstr "account not exist"
+
+#: utils/status_codes.py:40
+msgid "account_both_has_club"
+msgstr ""
+"Unable to bind! There are different cycling clubs associated with the "
+"accounts."
+
+#: utils/status_codes.py:43
+msgid "apply_processing"
+msgstr "You have submitted your application"
+
+#: utils/status_codes.py:44
+msgid "apply_fail"
+msgstr "Create application failure"
+
+#: utils/status_codes.py:45
+msgid "not_manager"
+msgstr "You're not a club manager"
+
+#: utils/status_codes.py:46
+msgid "no_apply_found"
+msgstr "No query to the application record"
+
+#: utils/status_codes.py:47
+msgid "no_club_found"
+msgstr "The club was not found"
+
+#: utils/status_codes.py:48
+msgid "club_is_full"
+msgstr "The club has been full"
+
+#: utils/status_codes.py:49
+msgid "already_belongs_club"
+msgstr "You have joined a club"
+
+#: utils/status_codes.py:50
+msgid "duplicate_apply"
+msgstr "Please don't repeat the application"
+
+#: utils/status_codes.py:51
+msgid "quit_club_fail"
+msgstr "Do not quit the club"
+
+#: utils/status_codes.py:52
+msgid "cannot_revoke_apply"
+msgstr "Not to withdraw the application"
+
+#: utils/status_codes.py:53
+msgid "processed_apply"
+msgstr "The record has been processed"
+
+#: utils/status_codes.py:54
+msgid "joined_other_club"
+msgstr "He has joined the other clubs"
+
+#: utils/status_codes.py:55
+msgid "empty_club"
+msgstr "No one in the club"
+
+#: utils/status_codes.py:56
+msgid "not_belong_club"
+msgstr "There is no this person in the club"
+
+#: utils/status_codes.py:57
+msgid "get_club_fail"
+msgstr "Unable to get the club activities"
+
+#: utils/status_codes.py:58
+msgid "invalid_vcode"
+msgstr "invalid code"
+
+#: utils/status_codes.py:59
+msgid "club_activity_not_found"
+msgstr "No club activity found"
+
+#: utils/status_codes.py:60
+msgid "club_activity_canceled"
+msgstr "club activity canceled"
+
+#: utils/status_codes.py:61
+msgid "club_activity_outdated"
+msgstr "club activity outdated"
+
+#: utils/status_codes.py:62
+msgid "club_activity_sms_over_max"
+msgstr "Operation is too frequent"
+
+#: utils/status_codes.py:63
+msgid "club_act_onwer"
+msgstr "organizer can not quit"
+
+#: utils/status_codes.py:64
+msgid "not_found_user_act_item"
+msgstr "No Registration"
+
+#: utils/status_codes.py:65
+msgid "not_club_act_onwer"
+msgstr "You are not the organizer"
+
+#: utils/status_codes.py:66
+msgid "start_date_over_end_date"
+msgstr "endDate great then startDate"
+
+#: utils/status_codes.py:68
+msgid "apply_end_date_over_start_date"
+msgstr "Registration deadline must be earlier than the start time"
+
+#: utils/status_codes.py:69
+msgid "not_the_same_act"
+msgstr "not the same activity"
+
+#: utils/status_codes.py:70
+msgid "has_been_sigined"
+msgstr "has sigined"
+
+#: utils/status_codes.py:71
+msgid "club_act_has_been_cancael"
+msgstr "Activity has been canceled"
+
+#: utils/status_codes.py:72
+msgid "has_been_un_reg_club_act"
+msgstr "Already revoke"
+
+#: utils/status_codes.py:73
+msgid "trans_club_fail"
+msgstr "trans club fail"
+
+#: utils/status_codes.py:74
+#, fuzzy
+#| msgid "no_club_found"
+msgid "no_club_trans_found"
+msgstr "no club trans found"
+
+#: utils/status_codes.py:75
+msgid "has_reject_trans"
+msgstr "The link has expired, you have rejected the transfer application"
+
+#: utils/status_codes.py:76
+msgid "you_already_manager"
+msgstr "you are already a captain"
+
+#: utils/status_codes.py:77
+msgid "trans_already_canceled"
+msgstr "The link has expired, the transfer application had been canceled"
+
+#: utils/status_codes.py:79
+msgid "cannot_option_yourself"
+msgstr "Can't operate in yourself"
+
+#: utils/status_codes.py:80
+msgid "request_not_found"
+msgstr "No friend requests"
+
+#: utils/status_codes.py:81
+msgid "friend_processed_apply"
+msgstr "The friend requests have been"
+
+#: utils/status_codes.py:83
+msgid "no_samples_found"
+msgstr "No samples found"
+
+#: utils/status_codes.py:84
+msgid "cyclingrecord_not_found"
+msgstr "no record found"
+
+#: utils/status_codes.py:85
+msgid "no_routes"
+msgstr "no routes"
+
+#: utils/status_codes.py:87
+msgid "no_feed_found"
+msgstr "The feed was not found"
+
+#: utils/status_codes.py:88
+msgid "no_comment_found"
+msgstr "The comment was not found"
+
+#: utils/status_codes.py:89
+msgid "club_gallery_full"
+msgstr "The club gellery is full"
+
+#: utils/status_codes.py:90
+msgid "no_photo_found"
+msgstr "This photo not found"
+
+#: utils/status_codes.py:91
+msgid "not_your_comment"
+msgstr "It is not your comment"
+
+#: utils/status_codes.py:92
+msgid "not_your_feed"
+msgstr "It is not your feed"
+
+#: utils/status_codes.py:94
+msgid "invalid_team_token"
+msgstr "invalid team"
+
+#: utils/status_codes.py:95
+msgid "team_full"
+msgstr "team is full"
+
+#: utils/status_codes.py:97
+msgid "no_shop_found"
+msgstr "No Bikeshop Data Found"
+
+#: utils/status_codes.py:98
+msgid "no_school_found"
+msgstr "No School Data Found"
+
+#: utils/status_codes.py:100
+msgid "no_segment_found"
+msgstr "No Segment Data Found"
+
+#: utils/status_codes.py:102
+msgid "no_badge_found"
+msgstr "The badge was not found"
+
+#: utils/status_codes.py:103
+msgid "no_activity_found"
+msgstr "No activity found"
+
+#: utils/status_codes.py:104
+msgid "no_gift_found"
+msgstr "The gift was not found"
+
+#: utils/status_codes.py:105
+msgid "can_not_light_up"
+msgstr "Not able to light up the badge"
+
+#: utils/status_codes.py:106
+msgid "activity_offline"
+msgstr "The Activity Offline"
+
+#: utils/status_codes.py:107
+msgid "not_join_activity"
+msgstr "No Registration"
+
+#: utils/status_codes.py:108
+msgid "not_able_award"
+msgstr "Not able to award"
+
+#: utils/status_codes.py:109
+msgid "already_got_award"
+msgstr "already got award"
+
+#: utils/status_codes.py:110
+msgid "not_support_carrier"
+msgstr "Not support the carrier"
+
+#: utils/status_codes.py:41
+msgid "strava_has_been_binded"
+msgstr "Strava has been binded"
+
+#: utils/status_codes.py:42
+msgid "invalid_params"
+msgstr "invalid params"
+
+#: utils/status_codes.py:43
+msgid "phone_has_been_binded"
+msgstr "phone has been binded"
+
+#: utils/status_codes.py:44
+msgid "email_has_been_binded"
+msgstr "email has been binded"
+
+#: utils/status_codes.py:45
+msgid "old_password_wrong"
+msgstr "old password wrong"
+
+#: utils/status_codes.py:83
+msgid "launch_activity_not_found"
+msgstr "launch activity not found"
+
+#: utils/status_codes.py:84
+msgid "launch_activity_time_error"
+msgstr "launch activity time error"
+
+#: utils/status_codes.py:85
+msgid "launch_activity_district_error"
+msgstr "launch activity district error"
+
+#: utils/status_codes.py:86
+msgid "launch_activity_platform_error"
+msgstr "launch activity platform error"
+
+#: apps/appeal/views.py:13
+msgid "appeal_please_make_sure_contact"
+msgstr "Please make sure the contact is correct"
+
+#: apps/appeal/views.py:16
+msgid "appeal_please_make_sure_problem"
+msgstr "Please make sure the problem description is correct"
+
+#: apps/appeal/views.py:19
+msgid "appeal_please_make_sure_userId"
+msgstr "Please make sure the userId is correct"
+
+#: apps/appeal/views.py:22
+msgid "appeal_please_make_sure_record"
+msgstr "Please make sure the ride record is correct"
+
+#: apps/appeal/views.py:25
+msgid "appeal_please_make_sure_mobile"
+msgstr "Please make sure the mobile platform is correct"
+
+#: apps/appeal/views.py:28
+msgid "appeal_please_make_sure_APP"
+msgstr "Please make sure the APP version is correct"
+
+#: apps/appeal/views.py:31
+msgid "appeal_please_make_sure_phone_model"
+msgstr "Please make sure the phone model is correct"
+
+#: apps/appeal/views.py:34
+msgid "appeal_please_make_sure_phone_system"
+msgstr "Please make sure the phone system is correct"
+
+#: apps/appeal/views.py:39
+msgid "appeal_complaint_failure"
+msgstr "Complaint failure"
+
+#: apps/appeal/views.py:40
+msgid "appeal_complaint_success"
+msgstr "Complaint success"
+
+#: apps/appeal/views.py:52
+msgid "appeal_insufficient_parameters"
+msgstr "Insufficient parameters"
+
+#: apps/appeal/views.py:57
+msgid "appeal_report_success"
+msgstr "Report success"
+
+#: apps/appeal/models.py:41
+msgid "appeal_please_submit_only_once"
+msgstr "please submit only once"
+
+#: apps/route/logics.py:640
+msgid "appeal_can_only_submitted_once"
+msgstr "please submit only once"
+
+#: apps/utils/views.py:42
+msgid "appeal_can_only_submitted_once_30_seconds"
+msgstr "Can only be submitted once in 30 seconds"
+
+#: apps/utils/views.py:42
+msgid "appeal_can_only_submitted_third_times_in_5_minutes"
+msgstr "Can only be submitted three times in 5 minutes"
+
+#: app/device/views.py:71
+msgid "no_permission"
+msgstr "no permission"
+
+#: apps/utils/views.py:42
+msgid "the_same_phone_number_send_more_than_the_limit_in_one_hour"
+msgstr "The same phone number within one hour to send more than the limit"
+
+#: apps/route/views.py:1243
+msgid "sport_identify_exist"
+msgstr "sport_identify is exist"

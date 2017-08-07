@@ -1,0 +1,95 @@
+/* DIN */
+@font-face {
+  font-family: 'DIN-Euro';
+  src: url('https://global.speedx.com/DIN-Euro.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'DIN-Light';
+  src: url('https://global.speedx.com/DIN-Light.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-Regular';
+  src: url('https://global.speedx.com/DIN-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-Medium';
+  src: url('https://global.speedx.com/DIN-Medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-Bold';
+  src: url('https://global.speedx.com/DIN-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-Black';
+  src: url('https://global.speedx.com/DIN-Black.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'DIN-LightAlternate';
+  src: url('https://global.speedx.com/DIN-LightAlternate.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-RegularAlternate';
+  src: url('https://global.speedx.com/DIN-RegularAlternate.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-MediumAlternate';
+  src: url('https://global.speedx.com/DIN-MediumAlternate.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-BoldAlternate';
+  src: url('https://global.speedx.com/DIN-BoldAlternate.otf') format('opentype');
+}
+@font-face {
+  font-family: 'DIN-BlackAlternate';
+  src: url('https://global.speedx.com/DIN-BlackAlternate.otf') format('opentype');
+}
+
+/* BEBAS */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('https://global.speedx.com/BebasNeue.otf') format('opentype');
+}
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('https://global.speedx.com/BebasNeue.otf') format('opentype');
+}
+
+/* Material Icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(/MaterialIcons-Regular.woff2) format('woff2'),
+       url(/MaterialIcons-Regular.woff) format('woff'),
+       url(/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}

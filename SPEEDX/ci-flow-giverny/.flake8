@@ -1,0 +1,4 @@
+[flake8]
+exclude =.git,.env,venv,logs,fabfile.py,docs,migrations,giverny/settings_docker.py,giverny/settings_pro.py,giverny/settings_local.py
+max-line-length=120
+ignore=W293,E402

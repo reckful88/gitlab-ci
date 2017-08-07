@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  mall:
+    build: .
+    command: bash -c "npm run start"
+    ports:
+      - "4000:4000"
+      - "4030:4030"

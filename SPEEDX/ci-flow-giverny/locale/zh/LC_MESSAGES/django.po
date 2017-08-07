@@ -1,0 +1,623 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-11 15:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/appeal/logics.py:134
+msgid "feedback_success"
+msgstr "已经成功提交您的反馈,工作人员会尽快联系您!"
+
+#: apps/club/configs.py:8
+msgid "privileg_1_01"
+msgstr "成员上限50人"
+
+#: apps/club/configs.py:9
+msgid "privileg_1_02"
+msgstr "相册容量500张"
+
+#: apps/club/configs.py:12
+msgid "privileg_2_01"
+msgstr "成员上限100人"
+
+#: apps/club/configs.py:13
+msgid "privileg_2_02"
+msgstr "相册容量1000张"
+
+#: apps/club/configs.py:16
+msgid "privileg_3_01"
+msgstr "成员上限150人"
+
+#: apps/club/configs.py:17
+msgid "privileg_3_02"
+msgstr "相册容量1500张"
+
+#: apps/club/configs.py:18
+msgid "privileg_3_03"
+msgstr "野兽定制大旗"
+
+#: apps/club/configs.py:21
+msgid "privileg_4_01"
+msgstr "成员上限300人"
+
+#: apps/club/configs.py:22
+msgid "privileg_4_02"
+msgstr "相册容量5000张"
+
+#: apps/club/configs.py:25
+msgid "privileg_5_01"
+msgstr "成员上限400人"
+
+#: apps/club/configs.py:26
+msgid "privileg_5_02"
+msgstr "相册容量10000张"
+
+#: apps/club/configs.py:36 apps/club/configs.py:43 apps/club/configs.py:50
+#: apps/club/configs.py:60
+msgid "progress_01"
+msgstr "人数"
+
+#: apps/club/configs.py:37 apps/club/configs.py:44 apps/club/configs.py:51
+#: apps/club/configs.py:61
+msgid "progress_02"
+msgstr "里程"
+
+#: apps/club/configs.py:38 apps/club/configs.py:45
+msgid "progress_03"
+msgstr "图片"
+
+#: apps/club/configs.py:39 apps/club/configs.py:46
+msgid "progress_04"
+msgstr "活动"
+
+#: apps/club/configs.py:40 apps/club/configs.py:47 apps/club/configs.py:55
+#: apps/club/configs.py:65
+msgid "progress_05"
+msgstr "活跃"
+
+#: apps/club/configs.py:77
+msgid "levelup_to_2"
+msgstr "恭喜，您的俱乐部升级到 Lv.2"
+
+#: apps/club/configs.py:78
+msgid "levelup_to_3"
+msgstr ""
+"恭喜，您的俱乐部升级到 Lv.3，定制野兽大旗请微信联系主页妞，微信号beast0001"
+
+#: apps/club/configs.py:79
+msgid "levelup_to_4"
+msgstr "恭喜，您的俱乐部升级到 Lv.4"
+
+#: apps/club/configs.py:80
+msgid "levelup_to_5"
+msgstr "恭喜，您的俱乐部升级到 Lv.5"
+
+#: apps/configs/logics.py:15
+msgid "my_last_month_distacne"
+msgstr "我的上月里程"
+
+#: apps/configs/logics.py:19
+msgid "club_month_avg"
+msgstr "俱乐部月平均里程"
+
+#: apps/configs/logics.py:23
+msgid "month_rank_top"
+msgstr "月榜冠军里程"
+
+#: apps/configs/logics.py:27
+msgid "speedx_avg"
+msgstr "野兽月平均里程"
+
+#: apps/utils/logics.py:20
+msgid "club_vcode_msg"
+msgstr "【野兽骑行】{0} 创建俱乐部验证码,30分钟后将失效哟"
+
+#: apps/utils/logics.py:21
+msgid "prize_vcode_msg"
+msgstr "【野兽骑行】领取奖品验证码:{0}"
+
+#: apps/utils/logics.py:22
+msgid "default_vcode_msg"
+msgstr "【野兽骑行】您的验证码是{0}"
+
+#: apps/utils/logics.py:23
+msgid "bind_phone_vcode_msg"
+msgstr "【野兽骑行】您的验证码是 {0}，请在30分钟之内输入。"
+
+#: apps/utils/logics.py:24
+msgid "phone_reg_vcode_msg"
+msgstr "【野兽骑行】您的验证码是 {0}，请在30分钟内输入。"
+
+#: apps/utils/logics.py:25
+msgid "reset_pwd_vcode_msg"
+msgstr "【野兽骑行】{0} 重置密码短信验证码"
+
+#: apps/utils/logics.py:26
+msgid "club_act_reg_notify"
+msgstr "【野兽骑行】您已报名『{0}』，时间地点详见电子票：{1}"
+
+#: apps/utils/logics.py:27
+msgid "sigin_with_vcode"
+msgstr "【野兽骑行】验证码{0},感谢您使用野兽骑行!"
+
+#: apps/utils/logics.py:28
+msgid "club_act_pre_notify"
+msgstr ""
+"【野兽骑行】『{0}』活动就要开始了，不要忘记哦！时间：{1}, 集合点：{2}。"
+
+#: apps/utils/logics.py:29
+msgid "inherit_club_msg"
+msgstr "确认俱乐部转让的验证码是{0}，如非本人操作，请忽略本短信。"
+
+#: apps/utils/logics.py:30
+msgid "change_phone_vcode_msg"
+msgstr "【野兽骑行】您的验证码是 {0}，请在30分钟内输入。"
+
+#: apps/utils/logics.py:31
+msgid "bind_email_vcode_msg"
+msgstr "您好，您的验证码为 {0}，有效期为30分钟。"
+
+#: apps/utils/logics.py:32
+msgid "change_email_vcode_msg"
+msgstr "您好，您的验证码为 {0}，有效期为30分钟。"
+
+#: apps/utils/logics.py:33
+msgid "unbind_email_vcode_msg"
+msgstr "您好，您的验证码为 {0}，有效期为30分钟。"
+
+#: templates/add_activity_form.html:21
+msgid "Home"
+msgstr ""
+
+#: templates/add_activity_form.html:24
+msgid "Add"
+msgstr ""
+
+#: utils/status_codes.py:19
+msgid "server_is_busy"
+msgstr "服务繁忙,请稍候再试"
+
+#: utils/status_codes.py:20
+msgid "record_already_fake"
+msgstr "记录已被判定为作弊"
+
+#: utils/status_codes.py:21
+msgid "record_is_unfake"
+msgstr "记录没有作弊"
+
+#: utils/status_codes.py:23
+msgid "missing_parameters"
+msgstr "缺少参数"
+
+#: utils/status_codes.py:24
+msgid "anonymous_user"
+msgstr "匿名用户"
+
+#: utils/status_codes.py:25
+msgid "unsupport_signtype"
+msgstr "未知登录方式"
+
+#: utils/status_codes.py:26
+msgid "invalid_email"
+msgstr "无效的邮箱"
+
+#: utils/status_codes.py:27
+msgid "expired_token"
+msgstr "token已过期"
+
+#: utils/status_codes.py:28
+msgid "password_wrong"
+msgstr "密码错误"
+
+#: utils/status_codes.py:29
+msgid "account_not_exist"
+msgstr "账号未注册"
+
+#: utils/status_codes.py:30
+msgid "account_exist"
+msgstr "账号已存在"
+
+#: utils/status_codes.py:31
+msgid "parameters_empty"
+msgstr "输入不可为空"
+
+#: utils/status_codes.py:32
+msgid "unchange_text"
+msgstr "未做任何更改"
+
+#: utils/status_codes.py:33
+msgid "invalid_phone"
+msgstr "无效的手机号"
+
+#: utils/status_codes.py:34
+msgid "has_been_binded"
+msgstr "账号已被绑定"
+
+#: utils/status_codes.py:35
+msgid "is_finally_account"
+msgstr "不可解除绑定"
+
+#: utils/status_codes.py:36
+msgid "is_not_binded"
+msgstr "账号不存在"
+
+#: utils/status_codes.py:37
+msgid "has_been_binded_same_type"
+msgstr "不可重复绑定"
+
+#: utils/status_codes.py:38
+msgid "invalid_access_token"
+msgstr "无效的授权"
+
+#: utils/status_codes.py:39
+msgid "user_not_exist"
+msgstr "账号未注册"
+
+#: utils/status_codes.py:40
+msgid "account_both_has_club"
+msgstr "该账号包含俱乐部信息，无法绑定"
+
+#: utils/status_codes.py:43
+msgid "apply_processing"
+msgstr "申请处理中"
+
+#: utils/status_codes.py:44
+msgid "apply_fail"
+msgstr "创建申请失败"
+
+#: utils/status_codes.py:45
+msgid "not_manager"
+msgstr "你不是俱乐部管理员"
+
+#: utils/status_codes.py:46
+msgid "no_apply_found"
+msgstr "没有查询到申请记录"
+
+#: utils/status_codes.py:47
+msgid "no_club_found"
+msgstr "未找到俱乐部"
+
+#: utils/status_codes.py:48
+msgid "club_is_full"
+msgstr "俱乐部已满员"
+
+#: utils/status_codes.py:49
+msgid "already_belongs_club"
+msgstr "您已加入了一个俱乐部"
+
+#: utils/status_codes.py:50
+msgid "duplicate_apply"
+msgstr "请不要重复申请"
+
+#: utils/status_codes.py:51
+msgid "quit_club_fail"
+msgstr "不可退出俱乐部"
+
+#: utils/status_codes.py:52
+msgid "cannot_revoke_apply"
+msgstr "没有可撤销的申请"
+
+#: utils/status_codes.py:53
+msgid "processed_apply"
+msgstr "该记录已被处理过了"
+
+#: utils/status_codes.py:54
+msgid "joined_other_club"
+msgstr "他已加入其他俱乐部"
+
+#: utils/status_codes.py:55
+msgid "empty_club"
+msgstr "俱乐部里没人"
+
+#: utils/status_codes.py:56
+msgid "not_belong_club"
+msgstr "俱乐部中没有该成员"
+
+#: utils/status_codes.py:57
+msgid "get_club_fail"
+msgstr "无法获取俱乐部活动"
+
+#: utils/status_codes.py:58
+msgid "invalid_vcode"
+msgstr "无效的验证码"
+
+#: utils/status_codes.py:59
+msgid "club_activity_not_found"
+msgstr "无效的俱乐部活动"
+
+#: utils/status_codes.py:60
+msgid "club_activity_canceled"
+msgstr "活动已被取消"
+
+#: utils/status_codes.py:61
+msgid "club_activity_outdated"
+msgstr "俱乐部活动已结束"
+
+#: utils/status_codes.py:62
+msgid "club_activity_sms_over_max"
+msgstr "通知发送过于频繁"
+
+#: utils/status_codes.py:63
+msgid "club_act_onwer"
+msgstr "俱乐部活动创建者不可退出"
+
+#: utils/status_codes.py:64
+msgid "not_found_user_act_item"
+msgstr "尚未报名"
+
+#: utils/status_codes.py:65
+msgid "not_club_act_onwer"
+msgstr "非组织者不可操作"
+
+#: utils/status_codes.py:66
+msgid "start_date_over_end_date"
+msgstr "结束日期大于开始日期"
+
+#: utils/status_codes.py:68
+msgid "apply_end_date_over_start_date"
+msgstr "报名截止时间大于开始时间"
+
+#: utils/status_codes.py:69
+msgid "not_the_same_act"
+msgstr "不是同一个活动"
+
+#: utils/status_codes.py:70
+msgid "has_been_sigined"
+msgstr "已签到"
+
+#: utils/status_codes.py:71
+msgid "club_act_has_been_cancael"
+msgstr "活动已被取消"
+
+#: utils/status_codes.py:72
+msgid "has_been_un_reg_club_act"
+msgstr "您已取消活动报名"
+
+#: utils/status_codes.py:73
+msgid "trans_club_fail"
+msgstr "俱乐部转让失败"
+
+#: utils/status_codes.py:74
+msgid "no_club_trans_found"
+msgstr "未找到俱乐部转让记录"
+
+#: utils/status_codes.py:75
+msgid "has_reject_trans"
+msgstr "该链接已经失效，你已拒绝了俱乐部的转让申请"
+
+#: utils/status_codes.py:76
+msgid "you_already_manager"
+msgstr "你已经是俱乐部的首领了"
+
+#: utils/status_codes.py:77
+msgid "trans_already_canceled"
+msgstr "链接已失效，俱乐部的转让申请已经被取消了"
+
+#: utils/status_codes.py:79
+msgid "cannot_option_yourself"
+msgstr "不可对自己操作"
+
+#: utils/status_codes.py:80
+msgid "request_not_found"
+msgstr "没有查询到好友申请"
+
+#: utils/status_codes.py:81
+msgid "friend_processed_apply"
+msgstr "该记录已被处理过了"
+
+#: utils/status_codes.py:83
+msgid "no_samples_found"
+msgstr "骑行记录不完整"
+
+#: utils/status_codes.py:84
+msgid "cyclingrecord_not_found"
+msgstr "未找到骑行记录"
+
+#: utils/status_codes.py:85
+msgid "no_routes"
+msgstr "没有路线"
+
+#: utils/status_codes.py:87
+msgid "no_feed_found"
+msgstr "内容没找到"
+
+#: utils/status_codes.py:88
+msgid "no_comment_found"
+msgstr "没有这条评论"
+
+#: utils/status_codes.py:89
+msgid "club_gallery_full"
+msgstr "相册容量已达上限"
+
+#: utils/status_codes.py:90
+msgid "no_photo_found"
+msgstr "没有找到相片"
+
+#: utils/status_codes.py:91
+msgid "not_your_comment"
+msgstr "不是你的评论"
+
+#: utils/status_codes.py:92
+msgid "not_your_feed"
+msgstr "不是你的发布的内容"
+
+#: utils/status_codes.py:94
+msgid "invalid_team_token"
+msgstr "无对应此id的小队，请重试"
+
+#: utils/status_codes.py:95
+msgid "team_full"
+msgstr "该小队已达到人数上限"
+
+#: utils/status_codes.py:97
+msgid "no_shop_found"
+msgstr "没有找到车店"
+
+#: utils/status_codes.py:98
+msgid "no_school_found"
+msgstr "没有找到学校信息"
+
+#: utils/status_codes.py:100
+msgid "no_segment_found"
+msgstr "没有找到赛段信息"
+
+#: utils/status_codes.py:102
+msgid "no_badge_found"
+msgstr "没有此勋章"
+
+#: utils/status_codes.py:103
+msgid "no_activity_found"
+msgstr "没有此活动"
+
+#: utils/status_codes.py:104
+msgid "no_gift_found"
+msgstr "没找到该奖品"
+
+#: utils/status_codes.py:105
+msgid "can_not_light_up"
+msgstr "未达到点亮条件"
+
+#: utils/status_codes.py:106
+msgid "activity_offline"
+msgstr "活动已过期"
+
+#: utils/status_codes.py:107
+msgid "not_join_activity"
+msgstr "尚未报名"
+
+#: utils/status_codes.py:108
+msgid "not_able_award"
+msgstr "未达到领奖资格"
+
+#: utils/status_codes.py:109
+msgid "already_got_award"
+msgstr "你已领取过该奖品"
+
+#: utils/status_codes.py:110
+msgid "not_support_carrier"
+msgstr "暂不支持该运营商"
+
+#: utils/status_codes.py:41
+msgid "strava_has_been_binded"
+msgstr "该账号已被绑定"
+
+#: utils/status_codes.py:42
+msgid "invalid_params"
+msgstr "参数错误"
+
+#: utils/status_codes.py:43
+msgid "phone_has_been_binded"
+msgstr "该手机号已被绑定，请使用其他手机号/邮箱"
+
+#: utils/status_codes.py:44
+msgid "email_has_been_binded"
+msgstr "该邮箱已被绑定，请使用其他手机号/邮箱"
+
+#: utils/status_codes.py:45
+msgid "old_password_wrong"
+msgstr "原始密码错误"
+
+#: utils/status_codes.py:83
+msgid "launch_activity_not_found"
+msgstr "未发现活动"
+
+#: utils/status_codes.py:84
+msgid "launch_activity_time_error"
+msgstr "活动日期错误"
+
+#: utils/status_codes.py:85
+msgid "launch_activity_district_error"
+msgstr "活动地区参数错误"
+
+#: utils/status_codes.py:86
+msgid "launch_activity_platform_error"
+msgstr "活动渠道参数错误"
+
+#: apps/appeal/views.py:13
+msgid "appeal_please_make_sure_contact"
+msgstr "请确认联系方式正确"
+
+#: apps/appeal/views.py:16
+msgid "appeal_please_make_sure_problem"
+msgstr "请确认问题描述没有问题"
+
+#: apps/appeal/views.py:19
+msgid "appeal_please_make_sure_userId"
+msgstr "请确认userId没有问题"
+
+#: apps/appeal/views.py:22
+msgid "appeal_please_make_sure_record"
+msgstr "请确认所属骑行记录没有问题"
+
+#: apps/appeal/views.py:25
+msgid "appeal_please_make_sure_mobile"
+msgstr "请确认手机平台是否没有问题"
+
+#: apps/appeal/views.py:28
+msgid "appeal_please_make_sure_APP"
+msgstr "请确认app版本号没有问题"
+
+#: apps/appeal/views.py:31
+msgid "appeal_please_make_sure_phone_model"
+msgstr "请确认手机型号没有问题"
+
+#: apps/appeal/views.py:34
+msgid "appeal_please_make_sure_phone_system"
+msgstr "请确认手机系统没有问题"
+
+#: apps/appeal/views.py:39
+msgid "appeal_complaint_failure"
+msgstr "申诉失败"
+
+#: apps/appeal/views.py:40
+msgid "appeal_complaint_success"
+msgstr "申诉成功"
+
+#: apps/appeal/views.py:52
+msgid "appeal_insufficient_parameters"
+msgstr "缺少参数"
+
+#: apps/appeal/views.py:57
+msgid "appeal_report_success"
+msgstr "举报已受理,请等待管理员处理"
+
+#: apps/appeal/models.py:41
+msgid "appeal_please_submit_only_once"
+msgstr "请不要重复申诉"
+
+#: apps/route/logics.py:640
+msgid "appeal_can_only_submitted_once"
+msgstr "你已经提交过了，请不要重复提交"
+
+#: apps/utils/views.py:42
+msgid "appeal_can_only_submitted_once_30_seconds"
+msgstr "同一手机号30秒内重复提交相同的内容"
+
+#: apps/utils/views.py:42
+msgid "appeal_can_only_submitted_third_times_in_5_minutes"
+msgstr "同一手机号5分钟内提交3次相同的内容"
+
+#: app/device/views.py:71
+msgid "no_permission"
+msgstr "无权限"
+
+#: apps/utils/views.py:42
+msgid "the_same_phone_number_send_more_than_the_limit_in_one_hour"
+msgstr "同一手机号一小时内发送次数超过限制"
+
+#: #: apps/route/views.py:1243
+msgid "sport_identify_exist"
+msgstr "骑行记录id已存在"

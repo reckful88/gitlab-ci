@@ -1,0 +1,75 @@
+stages:
+    - test
+    - build
+    - push_image
+    - deploy_dev
+    - deploy_production
+
+before_script:
+    - whoami
+    - pwd
+    - ls
+
+test:
+    stage: test
+    only:
+        - master
+        - develop
+    script:
+        - whoami
+    tags:
+        - shell
+
+build:
+    before_script:
+        - docker ps -a
+    stage: build
+    only:
+        - develop
+        - master
+    script:
+        - docker build -t fe/manager:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` .
+        - docker images
+    tags:
+        - shell
+
+push_image:
+    stage: push_image
+    only:
+        - develop
+        - master
+    script:
+        - docker tag fe/manager:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/fe/manager:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/fe/manager:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+deploy_dev:
+    stage: deploy_dev
+    only:
+        - develop
+    script:
+        - a=`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible web5 -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible web5 -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/manager:$a"
+        - ansible web5 -ugitlab-runner -m shell -a "docker ps -qaf "name=manager" | xargs docker rm -f"
+        - ansible web5 -ugitlab-runner -m shell -a "docker run -d -p 3020:80 --name manager --restart=always docker.speedx.com:5000/fe/manager:$a" --sudo
+        - ansible web5 -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
+
+deploy_production:
+    stage: deploy_production
+    only:
+        - master
+    script:
+        - a=`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible web5 -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible web5 -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/manager:$a"
+        - ansible web5 -ugitlab-runner -m shell -a "docker ps -qaf "name=manager" | xargs docker rm -f"
+        - ansible web5 -ugitlab-runner -m shell -a "docker run -d -p 3020:80 --name manager --restart=always docker.speedx.com:5000/fe/manager:$a" --sudo
+        - ansible web5 -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell

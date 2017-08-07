@@ -1,0 +1,16 @@
+.idea/*
+docs/_build/*
+.DS_Store
+*.pyc
+__pycache__
+logs/
+.avoscloud/
+*env/
+
+static/revision.txt
+
+giverny/settings_local.py
+
+dump.rdb
+
+giverny/lixiang.py

@@ -1,0 +1,19 @@
+FROM node
+
+WORKDIR /code/
+
+ADD id_rsa /code/
+RUN chmod 700 /code/id_rsa
+RUN echo "\tIdentityFile /code/id_rsa\n" >> /etc/ssh/ssh_config
+RUN echo "Host git.speedx.com\n" >> /etc/ssh/ssh_config
+RUN echo "\tStrictHostKeyChecking no\n" >> /etc/ssh/ssh_config
+
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+ADD package.json /code/
+RUN cnpm install
+ADD ./ /code/
+
+EXPOSE 80
+EXPOSE 3100
+
+CMD COMPILER_PUBLIC_PATH=/ npm run dev

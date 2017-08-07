@@ -1,0 +1,14 @@
+Django==1.9.5
+django-rest-swagger==0.3.8
+djangorestframework==3.4.0
+phonenumbers==7.4.4
+psycopg2==2.6.2
+PyYAML==3.11
+qiniu==7.0.7
+requests==2.10.0
+redis==2.10.5
+gunicorn==19.6.0
+PyMySQL==0.7.6
+django-http-monitor==0.3.2
+celery==3.1.19
+django-celery==3.1.17

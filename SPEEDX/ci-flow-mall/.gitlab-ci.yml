@@ -1,0 +1,117 @@
+stages:
+    - test
+    - build_dev
+    - build_production_cn
+    - build_production_en
+    - deploy_dev
+    - deploy_production_cn
+    - deploy_production_en
+
+before_script:
+    - whoami
+    - pwd
+    - ls
+
+test:
+    stage: test
+    only:
+        - develop
+        - master
+        - /^release-cn-.*$/
+        - /^release-en-.*$/
+    script:
+        - whoami
+    tags:
+        - shell
+
+build_dev:
+    stage: build_dev
+    only:
+        - develop
+    script:
+        - docker build -t fe/mall:develop-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` -f ./docker/Dockerfile_Dev .
+        - docker images
+        - docker tag fe/mall:develop-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/fe/mall:develop-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/fe/mall:develop-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+build_production_cn:
+    stage: build_production_cn
+    only:
+        - /^release-cn-.*$/
+    except:
+      - branches
+    script:
+        - docker build -t fe/mall:master-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` -f ./docker/Dockerfile_Prod_CN .
+        - docker images
+        - docker tag fe/mall:master-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/fe/mall:master-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/fe/mall:master-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+build_production_en:
+    stage: build_production_en
+    only:
+        - /^release-en-.*$/
+    except:
+        - branches
+    script:
+        - docker build -t fe/mall:master-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` -f ./docker/Dockerfile_Prod_US .
+        - docker images
+        - docker tag fe/mall:master-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/fe/mall:master-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/fe/mall:master-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+develop_dev:
+    stage: deploy_dev
+    only:
+        - develop
+    script:
+        - a=develop-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/mall:$a"
+        #- ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=mall" | xargs docker rm -f"
+        - ansible dev -ugitlab-runner -m shell -a "docker run -d -p 4000:4000 4001:4001 4030:4030 --name mall --restart=always docker.speedx.com:5000/fe/mall:$a" --sudo
+        - ansible dev -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
+
+deploy_production_cn:
+    stage: deploy_production_cn
+    only:
+        - /^release-cn-.*$/
+    except:
+        - branches
+    script:
+        - a=master-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/mall:$a"
+        #- ansible web5 -ugitlab-runner -m shell -a "docker ps -qaf "name=mall" | xargs docker rm -f"
+        - ansible dev -ugitlab-runner -m shell -a "docker run -d -p 3080:4000 --name mall_test --restart=always docker.speedx.com:5000/fe/mall:$a" --sudo
+        - ansible dev -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
+
+deploy_production_en:
+    stage: deploy_production_en
+    only:
+        - /^release-en-.*$/
+    except:
+        - branches
+    script:
+        - a=master-en`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible us -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible us -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/mall:$a"
+          # - ansible us -ugitlab-runner -m shell -a "docker ps -qaf "name=mall" | xargs docker rm -f"
+        - ansible us -ugitlab-runner -m shell -a "docker run -d -p 4000:4000 --name mall --restart=always docker.speedx.com:5000/fe/mall:$a" --sudo
+        - ansible us -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell

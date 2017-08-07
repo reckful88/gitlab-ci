@@ -1,0 +1,17 @@
+version: '2'
+services:
+  web0:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8100
+    volumes:
+      - .:/code
+    ports:
+      - "8100:8100"
+
+  web1:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8101
+    volumes:
+      - .:/code
+    ports:
+      - "8101:8101"

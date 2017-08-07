@@ -1,0 +1,144 @@
+stages:
+  - test
+  - build_dev_cn
+  - build_dev_en
+  - build_production
+  - deploy_dev_cn
+  - deploy_dev_en
+  - deploy_production_cn
+  - deploy_production_en
+
+before_script:
+  - whoami
+  - pwd
+  - ls
+
+test:
+  stage: test
+  only:
+    - develop
+    - master
+    - /^release-.*$/
+    - /^release-cn-.*$/
+    - /^release-en-.*$/
+  script:
+    - whoami
+  tags:
+    - shell
+
+build_dev_cn:
+  stage: build_dev_cn
+  only:
+    - develop
+  script:
+    - docker build -t backend/small:develop-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` -f ./dockers/Dockerfile_Dev_CN .
+    - docker images
+    - docker tag backend/small:develop-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/backend/small:develop-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+    - docker push docker.speedx.com:5000/backend/small:develop-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - docker logout docker.speedx.com:5000
+  tags:
+    - shell
+
+build_dev_en:
+  stage: build_dev_en
+  only:
+    - develop
+  script:
+    - docker build -t backend/small:develop-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` -f ./dockers/Dockerfile_Dev_EN .
+    - docker images
+    - docker tag backend/small:develop-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/backend/small:develop-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+    - docker push docker.speedx.com:5000/backend/small:develop-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - docker logout docker.speedx.com:5000
+  tags:
+    - shell
+
+build_production:
+  stage: build_production
+  only:
+    - /^release-cn-.*$/
+    - /^release-en-.*$/
+  except:
+    - branches
+  script:
+    - docker build -t backend/small:master-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` .
+    - docker images
+    - docker tag backend/small:master-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/backend/small:master-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+    - docker push docker.speedx.com:5000/backend/small:master-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - docker logout docker.speedx.com:5000
+  tags:
+    - shell
+
+deploy_dev_cn:
+  stage: deploy_dev_cn
+  only:
+    - develop
+  script:
+    - a=develop-cn-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+    - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/backend/small:$a"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_redis" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_postgre" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=smallname=small_celery" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_web" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name small_celery --restart=always docker.speedx.com:5000/backend/small:$a celery worker -A SMall.celery -l info" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_postgre --restart=always -v /mnt/SMall/data/develop/.data/postgres:/var/lib/postgresql/data --expose=5432 docker.speedx.com:5000/backend/small_db" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_redis -v /mnt/SMall/data/develop/.data/redis:/data redis:latest" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_web --restart=always --link small_celery:small_celery --link small_redis:small_redis --link small_postgre:small_postgre -p 8502:8502 --add-host api.pingxx.com:121.43.74.100 -e "SENTRY_DSN=http://32376d075c4b43f5ada0a6fa1f5209ac:5375941760934a60922bd2b05f535065@sentry.speedx.com/8" -e "DATABASE_DEFAULT_NAME=postgres" -e "DATABASE_DEFAULT_HOST=db" -e "DATABASE_DEFAULT_USER=postgres" -e "DATABASE_DEFAULT_PASSWORD=" -e "DATABASE_DEFAULT_PORT=5432" -e "DJANGO_SETTINGS_MODULE=SMall.settings_develop" -e "DEFAULT_COUNTRY_CODE=CN" docker.speedx.com:5000/backend/small:$a" --sudo
+  tags:
+    - shell
+
+deploy_dev_en:
+  stage: deploy_dev_en
+  only:
+    - develop
+  script:
+    - a=develop-en-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+    - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/backend/small:$a"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_redis_en" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_postgre_en" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=smallname=small_celery_en" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_web_en" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name small_celery_en --restart=always docker.speedx.com:5000/backend/small:$a celery worker -A SMall.celery -l info" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_postgre_en --restart=always -v /mnt/SMall/data/develop_en/.data/postgres:/var/lib/postgresql/data --expose=5432 docker.speedx.com:5000/backend/small_db" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_redis_en --restart=always -v /mnt/SMall/data/develop_en/.data/redis:/data redis:latest" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_web_en --restart=always --link small_celery_en:small_celery_en --link small_redis_en:small_redis_en --link small_postgre_en:small_postgre_en -p 8512:8512 --add-host api.pingxx.com:121.43.74.100 -e "SENTRY_DSN=http://32376d075c4b43f5ada0a6fa1f5209ac:5375941760934a60922bd2b05f535065@sentry.speedx.com/8" -e "DATABASE_DEFAULT_NAME=postgres" -e "DATABASE_DEFAULT_HOST=db" -e "DATABASE_DEFAULT_USER=postgres" -e "DATABASE_DEFAULT_PASSWORD=" -e "DATABASE_DEFAULT_PORT=5432" -e "DJANGO_SETTINGS_MODULE=SMall.settings_develop_en" -e "DEFAULT_COUNTRY_CODE=US" docker.speedx.com:5000/backend/small:$a" --sudo
+  tags:
+    - shell
+
+deploy_production_cn:
+  stage: deploy_production_cn
+  only:
+    - /^release-cn-.*$/
+  except:
+    - branches
+  script:
+    - a=master-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+    - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/backend/small:$a"
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_celery" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_celery --restart=always -e "SENTRY_DSN=https://32376d075c4b43f5ada0a6fa1f5209ac:5375941760934a60922bd2b05f535065@sentry.speedx.com/8" -e "DJANGO_SETTINGS_MODULE=SMall.settings_production" -e "C_FORCE_ROOT=true" docker.speedx.com:5000/backend/small:$a celery worker -A SMall.celery -l info" --sudo
+    - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=small_web" | xargs docker rm -f"
+    - ansible dev -ugitlab-runner -m shell -a "docker run -d --name=small_web --restart=always -p 8501:8501 --add-host api.pingxx.com:121.43.74.100 -e SENTRY_DSN=https://32376d075c4b43f5ada0a6fa1f5209ac:5375941760934a60922bd2b05f535065@sentry.speedx.com/8 -e DJANGO_SETTINGS_MODULE=SMall.settings_production -v /opt/docker_prj/SMall/static:/code/static/ docker.speedx.com:5000/backend/small:$a" --sudo
+  tags:
+    - shell
+
+deploy_production_en:
+  stage: deploy_production_en
+  only:
+    - /^release-en-.*$/
+  except:
+    - branches
+  script:
+    - a=master-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+    - ansible us -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+    - ansible us -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/backend/small:$a"
+    - ansible us -ugitlab-runner -m shell -a "docker ps -qaf "name=small_celery" | xargs docker rm -f"
+    - ansible us -ugitlab-runner -m shell -a "docker run -d --name=small_celery --restart=always -e "SENTRY_DSN=https://32376d075c4b43f5ada0a6fa1f5209ac:5375941760934a60922bd2b05f535065@sentry.speedx.com/8" -e "DJANGO_SETTINGS_MODULE=SMall.settings_production_en" -e "DEFAULT_COUNTRY_CODE=US" -e "C_FORCE_ROOT=true" docker.speedx.com:5000/backend/small:$a celery worker -A SMall.celery -l info" --sudo
+    - ansible us -ugitlab-runner -m shell -a "docker ps -qaf "name=small_web" | xargs docker rm -f"
+    - ansible us -ugitlab-runner -m shell -a "docker run -d --name=small_web --restart=always -p 8501:8501 --add-host api.pingxx.com:121.43.74.100 -e "SENTRY_DSN=https://32376d075c4b43f5ada0a6fa1f5209ac:5375941760934a60922bd2b05f535065@sentry.speedx.com/8" -e "DJANGO_SETTINGS_MODULE=SMall.settings_production_en" -e "DEFAULT_COUNTRY_CODE=US" -v /opt/docker_prj/SMall/static:/code/static docker.speedx.com:5000/backend/small:$a" --sudo
+  tags:
+    - shell

@@ -1,0 +1,106 @@
+stages:
+    - test
+    - build
+    - build_dev
+    - push_image
+    - deploy_dev
+    - deploy_pre
+    - deploy_production
+
+before_script:
+    - whoami
+    - pwd
+    - ls
+
+test:
+    stage: test
+    only:
+        - branches
+    script:
+        - whoami
+    tags:
+        - shell
+
+build:
+    before_script:
+        - docker ps -a
+    stage: build
+    only:
+        - release
+        - /^release_.*$/
+    script:
+        - docker build -t fe/account:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` .
+        - docker images
+    tags:
+        - shell
+
+build_dev:
+    stage: build_dev
+    only:
+        - master
+    script:
+        - docker build -t fe/account:dev-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` -f ./dockers/Dockerfile_Dev .
+        - docker images
+        - docker tag fe/account:dev-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/fe/account:dev-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/fe/account:dev-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+push_image:
+    stage: push_image
+    only:
+        - release
+        - /^release_.*$/
+    script:
+        - docker tag fe/account:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/fe/account:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/fe/account:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+deploy_dev:
+    stage: deploy_dev
+    only:
+        - master
+    script:
+        - a=dev-`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/account:$a"
+        - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=account_dev" | xargs docker rm -f"
+        - ansible dev -ugitlab-runner -m shell -a "docker run -d -p 3011:3100 --name account_dev --restart=always docker.speedx.com:5000/fe/account:$a " --sudo
+        - ansible dev -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
+
+deploy_pre:
+    stage: deploy_pre
+    only:
+        - release
+    script:
+        - a=`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/account:$a"
+        - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=account_pre" | xargs docker rm -f"
+        - ansible dev -ugitlab-runner -m shell -a "docker run -d -p 3010:80 --name account_pre --restart=always docker.speedx.com:5000/fe/account:$a" --sudo
+        - ansible dev -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
+
+deploy_production:
+    stage: deploy_production
+    only:
+        - /^release_.*$/
+    except:
+        - branches
+    script:
+        - a=`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible web4 -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible web4 -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/fe/account:$a"
+        - ansible web4 -ugitlab-runner -m shell -a "docker ps -qaf "name=account" | xargs docker rm -f"
+        - ansible web4 -ugitlab-runner -m shell -a "docker run -d -p 3010:80 --name account --restart=always docker.speedx.com:5000/fe/account:$a" --sudo
+        - ansible web4 -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell

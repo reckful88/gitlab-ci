@@ -1,0 +1,73 @@
+stages:
+    - test
+    - build
+    - push_image
+    - deploy_dev
+    - deploy_production
+
+test:
+    stage: test
+    only:
+        - develoy
+        - master
+    script:
+        - whoami
+    tags:
+        - shell
+
+build:
+    stage: build
+    only:
+        - develop
+        - master
+    script:
+        - docker build -t backend/giverny:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` .
+        - docker images
+    tags:
+        - shell
+
+push_image:
+    stage: push_image
+    only:
+        - develop
+        - master
+    script:
+        - docker tag backend/giverny:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD` docker.speedx.com:5000/backend/giverny:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker login docker.speedx.com:5000 -u speedx -p speedx2017
+        - docker push docker.speedx.com:5000/backend/giverny:`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - docker logout docker.speedx.com:5000
+    tags:
+        - shell
+
+deploy_dev:
+    stage: deploy_dev
+    only:
+        - develop
+    script:
+        - a=`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible dev -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible dev -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/backend/giverny:$a"
+        - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=celery" | xargs docker rm -f "
+        - ansible dev -ugitlab-runner -m shell -a "docker run -d --name celery --restart=always -e DJANGO_SETTINGS_MODULE=giverny.settings -e C_FORCE_ROOT=true docker.speedx.com:5000/backend/giverny:$a python manage.py celery worker -l info --beat" --sudo
+        - ansible dev -ugitlab-runner -m shell -a "docker ps -qaf "name=giverny" | xargs docker rm -f"
+        - ansible dev -ugitlab-runner -m shell -a "docker run -d --link celery:celery  -p 8201:8201 --name giverny --restart=always -e DJANGO_SETTINGS_MODULE=giverny.settings -v /code/logs docker.speedx.com:5000/backend/giverny:$a python manage.py runserver 0.0.0.0:8201" --sudo
+        - ansible dev -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
+
+deploy_production:
+    stage: deploy_production
+    only:
+        - master
+        - tags
+    script:
+        - a=`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`
+        - ansible web5 -ugitlab-runner -m shell -a "docker login docker.speedx.com:5000 -u speedx -p speedx2017"
+        - ansible web5 -ugitlab-runner -m shell -a "docker pull docker.speedx.com:5000/backend/giverny:$a"
+      # - ansible web5 -ugitlab-runner -m shell -a "docker ps -qaf "name=celery_giverny" | xargs docker rm -f "
+        - ansible web5 -ugitlab-runner -m shell -a "docker run -d --name celery_giverny --restart=always -e DJANGO_SETTINGS_MODULE=giverny.settings -e C_FORCE_ROOT=true docker.speedx.com:5000/backend/giverny:$a python manage.py celery worker -l info --beat" --sudo
+       #- ansible web5 -ugitlab-runner -m shell -a "docker ps -qaf "name=giverny" | xargs docker rm -f"
+        - ansible web5 -ugitlab-runner -m shell -a "docker run -d --link celery_giverny:celery_giverny  -p 8201:8201 --name giverny --restart=always -e DJANGO_SETTINGS_MODULE=giverny.settings -v /code/logs docker.speedx.com:5000/backend/giverny:$a python manage.py runserver 0.0.0.0:8201" --sudo
+        - ansible web5 -ugitlab-runner -m shell -a "docker logout docker.speedx.com:5000"
+    tags:
+        - shell
